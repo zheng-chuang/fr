@@ -5,7 +5,7 @@ type ProviderType = (
 ) => JSX.Element;
 type ConsumerType<T> = React.Consumer<T>;
 type UseContextType<T> = () => (T | ((data: T) => void))[];
-export function createContext<T>(
+export default function createContext<T>(
   defaultValue: T
 ): [{ Provider: ProviderType; Consumer: ConsumerType<T> }, UseContextType<T>] {
   const context = React.createContext(defaultValue);
