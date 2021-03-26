@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "zheng-chuang <zhengchuang_kindle@163.com>",
-  "license": "ISC",
+  "license": "MIT",
   "peerDependencies": {
     "react": ">=16.8"
   },
