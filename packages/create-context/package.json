@@ -1,9 +1,10 @@
 {
   "name": "@goson/create-context",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "react context helper ",
   "files": [
-    "lib"
+    "lib",
+    "README.md"
   ],
   "types": "lib",
   "main": "/lib/index.js",
