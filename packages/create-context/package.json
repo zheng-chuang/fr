@@ -1,6 +1,6 @@
 {
   "name": "@goson/create-context",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "react context helper ",
   "main": "/dist/index.js",
   "scripts": {
@@ -11,5 +11,6 @@
   "license": "MIT",
   "peerDependencies": {
     "react": ">=16.8"
-  }
+  },
+  "gitHead": "b9c452653836fa5f1a019ed2c0ade11968a36532"
 }
