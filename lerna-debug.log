@@ -1,0 +1,4 @@
+33 error Error: Command failed with exit code 128: git tag v0.0.5 -m v0.0.5
+33 error fatal: 标签 'v0.0.5' 已存在
+33 error     at makeError (/Users/zhengchuang/.nvm/versions/node/v10.17.0/lib/node_modules/lerna/node_modules/execa/lib/error.js:59:11)
+33 error     at handlePromise (/Users/zhengchuang/.nvm/versions/node/v10.17.0/lib/node_modules/lerna/node_modules/execa/index.js:114:26)
