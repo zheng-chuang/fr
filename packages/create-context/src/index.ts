@@ -1,1 +1,2 @@
-export { default as createContext } from "./create-context";
+export { createContext } from "./create-context";
+export { ProviderConnect } from "./provider-connect";
