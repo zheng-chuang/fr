@@ -5,6 +5,7 @@
   "files": [
     "lib"
   ],
+  "types": "lib",
   "main": "/lib/index.js",
   "scripts": {
     "build": "tsc -p tsconfig.json",

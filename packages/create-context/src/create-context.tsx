@@ -4,7 +4,7 @@ type ProviderType = (
   props: Readonly<React.PropsWithChildren<object>>
 ) => JSX.Element;
 type ConsumerType<T> = React.Consumer<T>;
-type UseContextType<T> = () => (T | ((data: T) => void))[];
+type UseContextType<T> = () => [T, (data: T) => void];
 export default function createContext<T>(
   defaultValue: T
 ): [{ Provider: ProviderType; Consumer: ConsumerType<T> }, UseContextType<T>] {
@@ -16,7 +16,7 @@ export default function createContext<T>(
     return <context.Provider value={data}>{props.children}</context.Provider>;
   }
 
-  const useContext = () => {
+  const useContext:UseContextType<T> = () => {
     const data = React.useContext(context);
     return [data, setContext];
   };
