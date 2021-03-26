@@ -1,6 +1,13 @@
 import React from "react";
 
-export function createContext<T>(defaultValue: T) {
+type ProviderType = (
+  props: Readonly<React.PropsWithChildren<object>>
+) => JSX.Element;
+type ConsumerType<T> = React.Consumer<T>;
+type UseContextType<T> = () => (T | ((data: T) => void))[];
+export function createContext<T>(
+  defaultValue: T
+): [{ Provider: ProviderType; Consumer: ConsumerType<T> }, UseContextType<T>] {
   const context = React.createContext(defaultValue);
   let setContext: (data: T) => void;
   function Provider(props: Readonly<React.PropsWithChildren<object>>) {
