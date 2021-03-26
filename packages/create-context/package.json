@@ -1,6 +1,6 @@
 {
   "name": "@goson/create-context",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "react context helper ",
   "main": "/dist/index.js",
   "scripts": {
