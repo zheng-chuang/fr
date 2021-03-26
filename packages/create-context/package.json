@@ -1,6 +1,6 @@
 {
   "name": "@fr/create-context",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "react context helper ",
   "main": "/dist/index.js",
   "scripts": {
@@ -19,5 +19,5 @@
     "tslint-config-airbnb": "^5.11.2",
     "typescript": "^4.2.3"
   },
-  "gitHead": "7d9da4894738eba3d402f96fcaceaf07f940ef6d"
+  "gitHead": "6de55ad1a1d5ea8a507b139f895af1dfbdaec67e"
 }
