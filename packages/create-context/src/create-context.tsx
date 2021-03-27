@@ -3,11 +3,8 @@ import React from "react";
 export const providers: React.FC[] = [];
 
 type UseContextType<T> = () => [T, (data: T) => void];
-
-export function createContext<T>(
-  defaultValue: T
-): [UseContextType<T>, React.Consumer<T>] {
-
+type CreateContextType<T> = [UseContextType<T>, React.Consumer<T>];
+export function createContext<T>(defaultValue: T): CreateContextType<T> {
   const context = React.createContext(defaultValue);
   let setContext: (data: T) => void;
 
