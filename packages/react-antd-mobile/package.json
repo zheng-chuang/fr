@@ -18,7 +18,7 @@
   ],
   "author": "zheng-chuang <zhengchuang_kindle@163.com>",
   "license": "MIT",
-  "dependencies": {
+  "peerDependencies": {
     "@goson/react-cdk": "0.0.2"
   }
 }
