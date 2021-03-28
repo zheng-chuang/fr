@@ -21,5 +21,8 @@
     "react-dom": ">=16.8"
   },
   "author": "zheng-chuang <zhengchuang_kindle@163.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@ant-design/icons": "^4.6.2"
+  }
 }
