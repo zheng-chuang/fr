@@ -1,26 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-export function createPortal(selector?: string) {
+export function createPortal() {
   let el: Element = document.createElement("div");
 
-  const portal: React.FC<{ visible: boolean }> = (props) => {
-    const [init, setInit] = React.useState(false);
+  const portal: React.FC<{ visible: boolean; selector?: string }> = (props) => {
     React.useEffect(() => {
-      setInit(true);
-      if (selector) return;
       document.body.appendChild(el);
       return () => {
         document.body.removeChild(el);
       };
-    }, [props.visible]);
+    }, []);
 
-    if (selector && !init) {
-      const dom = document.querySelector(selector);
-      if (dom) {
-        el = dom;
-      }
-    }
+    React.useEffect(() => {
+      if (!props.selector) return;
+      const dom = document.querySelector(props.selector);
+      if (!dom) return;
+      el = dom;
+    }, [props.selector]);
+
     return props.visible ? ReactDOM.createPortal(props.children, el) : null;
   };
   return portal;
