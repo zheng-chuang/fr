@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 export function createPortal() {
   let el: Element = document.createElement("div");
 
-  const portal: React.FC<{ visible: boolean; selector?: string }> = (props) => {
+  const portal: React.FC<{ visible: boolean; dom?: Element }> = (props) => {
     React.useEffect(() => {
       document.body.appendChild(el);
       return () => {
@@ -13,11 +13,9 @@ export function createPortal() {
     }, []);
 
     React.useEffect(() => {
-      if (!props.selector) return;
-      const dom = document.querySelector(props.selector);
-      if (!dom) return;
-      el = dom;
-    }, [props.selector]);
+      if (!props.dom) return;
+      el = props.dom;
+    }, [props.dom]);
 
     return props.visible ? ReactDOM.createPortal(props.children, el) : null;
   };
