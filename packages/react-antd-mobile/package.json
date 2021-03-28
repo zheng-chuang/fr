@@ -1,6 +1,6 @@
 {
   "name": "@goson/react-antd-mobile",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "antd-mobile 个别组件的拓展或替代产品",
   "main": "lib/index.js",
   "scripts": {
