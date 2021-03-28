@@ -12,16 +12,10 @@
     "build": "tsc -p tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "zheng-chuang <zhengchuang_kindle@163.com>",
+  "author": "zhengchuang <zhengchuang_kindle@163.com>",
   "license": "MIT",
   "peerDependencies": {
     "react": ">=16.8"
   },
-  "gitHead": "b9c452653836fa5f1a019ed2c0ade11968a36532",
-  "devDependencies": {
-    "@types/react": "^17.0.3",
-    "tslint": "^6.1.3",
-    "tslint-config-airbnb": "^5.11.2",
-    "typescript": "^4.2.3"
-  }
+  "gitHead": "b9c452653836fa5f1a019ed2c0ade11968a36532"
 }
