@@ -1,0 +1,19 @@
+{
+  "name": "@goson/react-cdk",
+  "version": "0.0.1",
+  "description": "组件创建工具",
+  "main": "/lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "cdk"
+  ],
+  "peerDependencies": {
+    "react": ">=16.8",
+    "react-dom": ">=16.8"
+  },
+  "author": "zhengchuang <zhengchuang_kindle@163.com>",
+  "license": "MIT"
+}
