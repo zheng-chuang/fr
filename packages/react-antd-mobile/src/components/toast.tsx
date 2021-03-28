@@ -4,7 +4,7 @@ import { LoadingOutlined } from "@ant-design/icons";
 
 const ToastPortal = createPortal();
 
-const Toast: React.FC<{ visible: boolean }> = (props) => {
+function Toast(props: React.ComponentProps<any>) {
   return (
     <ToastPortal visible={props.visible}>
       <div className="am-toast am-toast-mask">
@@ -20,9 +20,9 @@ const Toast: React.FC<{ visible: boolean }> = (props) => {
       </div>
     </ToastPortal>
   );
-};
+}
 
-export const loading: React.FC<{ visible: boolean }> = (props) => {
+const loading: React.FC<{ visible: boolean }> = (props) => {
   const icon = React.useMemo(() => {
     return <LoadingOutlined />;
   }, [props.visible]);
@@ -33,5 +33,7 @@ export const loading: React.FC<{ visible: boolean }> = (props) => {
     </Toast>
   );
 };
+
+Toast.loading = loading;
 
 export default Toast;
