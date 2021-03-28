@@ -1,0 +1,24 @@
+{
+  "name": "@goson/react-antd-mobile",
+  "version": "0.0.1",
+  "description": "antd-mobile 个别组件的拓展或替代产品",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "npx tsc -p tsconfig.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "lib",
+    "README.md"
+  ],
+  "types": "lib",
+  "keywords": [
+    "react",
+    "antd-mobile"
+  ],
+  "author": "zheng-chuang <zhengchuang_kindle@163.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@goson/react-cdk": "0.0.2"
+  }
+}
