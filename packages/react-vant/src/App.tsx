@@ -1,19 +1,11 @@
+import { useState } from "react";
+import Overlay from "./overlay";
 function App() {
+  const [show, setShow] = useState(false)
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={() => setShow(!show)}>显示</button>
+      <Overlay show={show} onClick={() => setShow(!show)}>得到的</Overlay>
     </div>
   );
 }
