@@ -17,8 +17,10 @@ interface TransitionProps {
 const _Transition: React.FC<PropsWithChildren<TransitionProps>> = (props) => {
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
   const ref = useRef<HTMLElement>();
-  const preChildren = useRef<ReactNode>(null);
-
+  const preChildren = useRef<ReactNode>();
+  if (props.show) {
+    preChildren.current = props.children;
+  }
   useEffect(() => {
     const dom = ref.current;
     const animationend = () => {
@@ -28,9 +30,10 @@ const _Transition: React.FC<PropsWithChildren<TransitionProps>> = (props) => {
           `${props.name}-leave-active`
         );
       }
-
-      preChildren.current = props.children;
-      forceUpdate();
+      if (preChildren.current !== props.children) {
+        preChildren.current = props.children;
+        forceUpdate();
+      }
     };
     if (dom) {
       dom.addEventListener("animationend", animationend);
@@ -41,10 +44,6 @@ const _Transition: React.FC<PropsWithChildren<TransitionProps>> = (props) => {
       }
     };
   }, [props.children]);
-
-  if (props.show) {
-    preChildren.current = props.children;
-  }
 
   const renderChildren = useCallback(() => {
     if (React.isValidElement(preChildren.current)) {
