@@ -1,6 +1,12 @@
 import React, { CSSProperties, memo, useCallback, useMemo } from "react";
 import classnames from "classnames";
-import { getZIndexStyle, isDef, noop, preventDefault } from "../utils";
+import {
+  createNamespace,
+  getZIndexStyle,
+  isDef,
+  noop,
+  preventDefault,
+} from "../utils";
 import Transition from "../transition";
 type HTMLDivElementProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
@@ -12,7 +18,7 @@ interface OverlayProps extends HTMLDivElementProps {
   duration?: number;
   lockScroll?: boolean;
 }
-
+const [name] = createNamespace("overlay");
 const _Overlay: React.FC<OverlayProps> = (props) => {
   const {
     style: customStyle,
@@ -40,9 +46,7 @@ const _Overlay: React.FC<OverlayProps> = (props) => {
   }, [customStyle, zIndex, show, duration]);
 
   const cls = useMemo(() => {
-    return classnames(props.className, {
-      "van-overlay": true,
-    });
+    return classnames(props.className, name);
   }, [props.className]);
 
   return (

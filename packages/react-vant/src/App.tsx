@@ -1,14 +1,16 @@
 import { useState } from "react";
 import Overlay from "./overlay";
+import "./App.less";
+import { Popup } from "./popup/popup";
 function App() {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   return (
     <div className="App">
       <button onClick={() => setShow(true)}>显示</button>
-      <Overlay show={show} style={{ zIndex: 1 }} onClick={() => setShow(false)}>
-        得到的
-      </Overlay>
+      <Popup show={show} onClose={() => setShow(false)}>
+        <div style={{ background: "#fff", padding: "30px 50px" }}>dfasfd</div>
+      </Popup>
     </div>
   );
 }
