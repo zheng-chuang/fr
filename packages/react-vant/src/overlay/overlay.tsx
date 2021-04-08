@@ -1,27 +1,28 @@
-import React, {
-  CSSProperties,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-} from "react";
-import classNames from "classnames";
+import React, { CSSProperties, memo, useCallback, useMemo } from "react";
+import classnames from "classnames";
 import { getZIndexStyle, isDef, noop, preventDefault } from "../utils";
+import Transition from "../transition";
 type HTMLDivElementProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
 >;
-export interface OverlayProps extends HTMLDivElementProps {
+interface OverlayProps extends HTMLDivElementProps {
   show: boolean;
-  zIndex?: number | string;
-  duration?: number | string;
-  customStyle?: CSSProperties;
+  zIndex?: number;
+  duration?: number;
   lockScroll?: boolean;
 }
 
-export const Overlay: React.FC<OverlayProps> = (props) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { customStyle, zIndex, duration } = props;
+const _Overlay: React.FC<OverlayProps> = (props) => {
+  const {
+    style: customStyle,
+    zIndex,
+    duration,
+    show,
+    lockScroll,
+    ..._props
+  } = props;
+
   const preventTouchMove = useCallback((event) => {
     preventDefault(event, true);
   }, []);
@@ -30,39 +31,37 @@ export const Overlay: React.FC<OverlayProps> = (props) => {
     const _style: CSSProperties = {
       ...getZIndexStyle(zIndex),
       ...customStyle,
+      display: show ? undefined : "none",
     };
     if (isDef(duration)) {
       _style.animationDuration = `${duration}s`;
     }
     return _style;
-  }, [customStyle, zIndex, duration]);
+  }, [customStyle, zIndex, show, duration]);
 
-  const className = useMemo(() => {
-    return classNames("van-overlay", props.className);
+  const cls = useMemo(() => {
+    return classnames(props.className, {
+      "van-overlay": true,
+    });
   }, [props.className]);
 
-  useEffect(() => {
-    if (!ref.current) return;
-    if (props.show) {
-      ref.current.style.display = "block";
-    } else {
-      ref.current.style.display = "none";
-    }
-  }, [props.show]);
-
   return (
-    <div
-      ref={ref}
-      {...props}
-      className={className}
-      style={style}
-      onTouchMove={props.lockScroll ? preventTouchMove : noop}
-    >
-      {props.children}
-    </div>
+    <Transition name="van-fade" show={show}>
+      <div
+        {..._props}
+        className={cls}
+        style={style}
+        onTouchMove={props.lockScroll ? preventTouchMove : noop}
+      >
+        {props.children}
+      </div>
+    </Transition>
   );
 };
+_Overlay.displayName = "Overlay";
 
-Overlay.defaultProps = {
+_Overlay.defaultProps = {
   lockScroll: true,
 };
+
+export const Overlay = memo(_Overlay);
